@@ -1,0 +1,234 @@
+/* 전체 페이지 스타일 */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+/* 오디오 컨트롤 영역 (게임 화면 위쪽에 위치) */
+#audio-controls {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+}
+
+.audio-group {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.audio-group button {
+  margin-left: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* 게임 영역 */
+#game-wrapper {
+  width: 1000px;
+  height: 600px;
+  border: 2px solid #444;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 게임 내부 컨테이너 */
+#game-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* 점수 */
+#score {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  z-index: 5;
+}
+
+/* 타이머 바 */
+#timer-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  background-color: #ddd;
+  z-index: 5;
+}
+
+#timer-progress {
+  width: 100%;
+  height: 100%;
+  background-color: #00c853;
+  transition: height 1s linear;
+}
+
+/* 원이 생성되는 영역 */
+#game-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 10px);
+  height: 100%;
+  z-index: 1;
+}
+
+/* 원 스타일 */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: red;
+  cursor: pointer;
+  animation: pop-in 0.2s ease-out;
+}
+
+/* 원 등장 애니메이션 */
+@keyframes pop-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 원 터짐 애니메이션 */
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.circle.explode {
+  animation: explode 0.3s forwards;
+}
+
+/* 시작 화면 */
+#start-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* 반투명 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+#start-screen .overlay {
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 종료 화면 */
+#end-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* 반투명 배경 */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+#end-screen .overlay {
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+#end-screen h2,
+#end-screen p,
+#end-screen button {
+  margin: 10px 0;
+}
+
+#start-button,
+#restart-button {
+  font-size: 18px;
+  padding: 5px 15px 5px 15px;
+  border-radius: 10px;
+  border: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #121212;
+    color: #eee;
+  }
+
+  #game-wrapper {
+    background: #1e1e1e;
+    border-color: #888;
+  }
+
+  .circle {
+    background-color: #ff5252;
+  }
+
+  #start-screen .overlay,
+  #end-screen .overlay {
+    background: #2c2c2c;
+    color: #eee;
+  }
+
+  #score,
+  #audio-controls label {
+    color: #eee;
+  }
+}
+
+.floating-text {
+  position: absolute;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff4081;
+  animation: float-up 0.6s ease-out forwards;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+#timer-progress.low-time {
+  background-color: #e53935 !important; /* 빨간색 */
+}

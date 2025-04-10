@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Clicker :: 나의 마우스 DPI 찾기</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+  </head>
+  <body>
+    <!-- 🎧 오디오 컨트롤 (게임 화면 바깥) -->
+    <div id="audio-controls">
+      <div class="audio-group">
+        <label
+          >효과음
+          <input
+            type="range"
+            id="sfx-volume"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+          />
+        </label>
+        <button id="sfx-mute">🔇</button>
+      </div>
+    </div>
+
+    <!-- 🎮 게임 화면 -->
+    <div id="game-wrapper">
+      <div id="game-container">
+        <!-- 게임 시작 화면 -->
+        <div id="start-screen">
+          <div class="overlay">
+            <h1>
+              <img
+                src="./favicon.png"
+                alt="게임 아이콘"
+                width="60"
+                height="60"
+                style="
+                  vertical-align: middle;
+                  margin-right: -15px;
+                  margin-left: -15px;
+                "
+              />
+              Clicker!
+            </h1>
+            <p>
+              원을 클릭하면 점수가 올라갑니다.
+              <br />
+              DPI를 조정해가며 가장 나에게 맞는 DPI를 찾아봅시다.
+            </p>
+            <button id="start-button">게임 시작</button>
+          </div>
+        </div>
+
+        <!-- 점수 표시 -->
+        <div id="score">점수: 0</div>
+
+        <!-- 타이머 표시 -->
+        <div id="timer-bar">
+          <div id="timer-progress"></div>
+        </div>
+
+        <!-- 원 생성 영역 -->
+        <div id="game-area"></div>
+
+        <!-- 게임 종료 화면 -->
+        <div id="end-screen">
+          <div class="overlay">
+            <h2>게임 종료!</h2>
+            <p id="final-score"></p>
+            <button id="restart-button">재도전</button>
+          </div>
+        </div>
+
+        <!-- 🔊 사운드 -->
+        <audio
+          id="explode-sound"
+          src="sounds/explode.mp3"
+          preload="auto"
+        ></audio>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
