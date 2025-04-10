@@ -125,6 +125,7 @@ function startGame() {
   gameArea.innerHTML = "";
   startScreen.style.display = "none";
   endScreen.style.display = "none";
+  timerProgress.classList.remove("low-time");
 
   for (let i = 0; i < circleCount; i++) {
     gameArea.appendChild(createCircle());
